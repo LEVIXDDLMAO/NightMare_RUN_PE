@@ -100,6 +100,28 @@ class Note extends FlxSprite
 						missHealth = 0.3;
 					}
 					hitCausesMiss = true;
+				case 'BendySplashNote':
+					ignoreNote = true;
+					reloadNote('INK');
+					noteSplashDisabled = true; // no notesplash for now
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;
+					hitCausesMiss = true;
+				case 'BendyShadowNote':
+					ignoreNote = true;
+					reloadNote('SIN');
+					noteSplashDisabled = true;
+					colorSwap.hue = 0;
+					colorSwap.saturation = 0;
+					colorSwap.brightness = 0;
+					hitCausesMiss = true;
+					if (PlayState.mechanicType == 0 || PlayState.mechanicType == 2){
+                        missHealth = 0.8;
+					}
+					else {
+						missHealth = 1.0;
+					}
 				case 'No Animation':
 					noAnimation = true;
 				case 'GF Sing':
