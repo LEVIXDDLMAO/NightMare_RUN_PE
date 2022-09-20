@@ -268,8 +268,21 @@ class PlayState extends MusicBeatState
 	// Less laggy controls
 	private var keysArray:Array<Dynamic>;
 
+	var healthTweenObj:FlxTween;
+	public var bumpRate:Int = 4;
+
 	public static var mechanicsEnabled:Bool = true;
-	public static var mechanicType:Int = 0; // 0 is standard, 1 is hell, 2 is off	
+	public static var mechanicType:Int = 0; // 0 is standard, 1 is hell, 2 is off
+
+	// BENDY
+	var inkObj:FlxSprite;
+	var inkProg:Int = 0;
+	var inkStormRain:FlxSprite;
+	var blackOverlay:FlxSprite;
+	var stickmanGuy:FlxSprite;
+	var blackStickmanThereInBG:FlxSprite;
+	var bendyboysfg:FlxSprite;
+	var bendyIntroOverlay:FlxSprite;	
 
 	override public function create()
 	{
@@ -3859,6 +3872,10 @@ class PlayState extends MusicBeatState
 							boyfriend.playAnim('hurt', true);
 							boyfriend.specialAnim = true;
 						}
+					case 'Ink Note':
+						boyfriend.playAnim('hurt', true);
+						updateInkProg();
+						FlxG.sound.play(Paths.sound('inked', 'weekink'));
 				}
 				
 				note.wasGoodHit = true;
@@ -4224,7 +4241,7 @@ class PlayState extends MusicBeatState
 		{
 			moveCameraSection(Std.int(curStep / 16));
 		}
-		if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % 4 == 0)
+		if (camZooming && FlxG.camera.zoom < 1.35 && ClientPrefs.camZooms && curBeat % bumpRate == 0)
 		{
 			FlxG.camera.zoom += 0.015;
 			camHUD.zoom += 0.03;
