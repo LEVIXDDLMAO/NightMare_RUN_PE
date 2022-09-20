@@ -59,12 +59,14 @@
 		<library name="songs"         preload="true" />
 		<library name="shared"        preload="true" />
 		<library name="NightmareRun"  preload="ture" />
+		<library name="weekink"       preload="ture" /4
 	</section>
 	
 	<section if="NO_PRELOAD_ALL">
 		<library name="songs"         preload="false" />
 		<library name="shared"        preload="false" />
 		<library name="NightmareRun"  preload="false" />
+		<library name="weekink"  preload="false" />
 	</section>
 	
 	<assets path="plugins/"             rename=''               if="VIDEOS_ALLOWED windows" />
@@ -75,7 +77,9 @@
 	<assets path="assets/shared"        library="shared"        exclude="*.ogg" if="web"/>
 	<assets path="assets/shared"        library="shared"        exclude="*.mp3" unless="web"/>
 	<assets path="assets/NightmareRun"  library="NightmareRun"  exclude="*.ogg" if="web"/>
-	<assets path="assets/NightmareRun"  library="NightmareRun"  exclude="*.mp3" unless="web"/>
+	<assets path="assets/NightmareRun"  library="NightmareRun"  exclude="*.mp3" unless="web"/>	
+        <assets path="assets/weekink"       library="weekink"       exclude="*.ogg" if="web"/>
+	<assets path="assets/weekink"       library="weekink"       exclude="*.mp3" unless="web"/>
 	
 	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
