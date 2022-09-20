@@ -1,30 +1,20 @@
 {
-	"storyName": "nightmare run",
-	"hideFreeplay": false,
-	"weekBackground": "stage",
-	"weekBefore": "tutorial",
-	"freeplayColor": [
-		146,
-		113,
-		253
-	],
-	"startUnlocked": true,
 	"songs": [
-		[
-			"nightmare-run",
-			"bendy",
-			[
-				35,
-				40,
-				80
-			]
-		]
+		["Nightmare-run", "bendy", [146, 113, 253]]
 	],
-	"hideStoryMode": true,
+
 	"weekCharacters": [
-		"dad",
+		"",
 		"bf",
 		"gf"
 	],
-	"weekName": "Nightmare RUN"
+	"weekBackground": "stage",
+
+	"storyName": "",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
 }
