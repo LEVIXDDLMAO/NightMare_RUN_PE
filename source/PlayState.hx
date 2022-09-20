@@ -48,7 +48,6 @@ import flixel.group.FlxSpriteGroup;
 import flixel.input.keyboard.FlxKey;
 import openfl.events.KeyboardEvent;
 import Achievements;
-import Shaders.PulseEffect;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
@@ -210,8 +209,6 @@ class PlayState extends MusicBeatState
 	var grpLimoParticles:FlxTypedGroup<BGSprite>;
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:BGSprite;
-
-	public static var screenshader:Shaders.PulseEffect = new PulseEffect();
 
 	var upperBoppers:BGSprite;
 	var bottomBoppers:BGSprite;
@@ -440,72 +437,6 @@ class PlayState extends MusicBeatState
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
-
-                    case 'jaydin':
-                    {
-						defaultCamZoom = 0.85;
-						curStage = 'jaydin';
-						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('jaydin'));
-						bg.antialiasing = true;
-						bg.scrollFactor.set(0.6, 0.6);
-						bg.active = true;
-	
-						add(bg);
-						#if windows
-						// below code assumes shaders are always enabled which is bad
-						var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
-						testshader.waveAmplitude = 0.1;
-						testshader.waveFrequency = 5;
-						testshader.waveSpeed = 2;
-						bg.shader = testshader.shader;
-						curbg = bg;
-						#end
-	
-					}
-
-                    case '3d':
-                    {
-						defaultCamZoom = 0.85;
-						curStage = '3d';
-						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('3d'));
-						bg.antialiasing = true;
-						bg.scrollFactor.set(0.6, 0.6);
-						bg.active = true;
-	
-						add(bg);
-						#if windows
-						// below code assumes shaders are always enabled which is bad
-						var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
-						testshader.waveAmplitude = 0.2;
-						testshader.waveFrequency = 10;
-						testshader.waveSpeed = 2;
-						bg.shader = testshader.shader;
-						curbg = bg;
-						#end
-	
-					}
-
-                    case 'trippy':
-                    {
-						defaultCamZoom = 0.85;
-						curStage = 'trippy';
-						var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('trippy'));
-						bg.antialiasing = true;
-						bg.scrollFactor.set(0.6, 0.6);
-						bg.active = true;
-	
-						add(bg);
-						#if windows
-						// below code assumes shaders are always enabled which is bad
-						var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
-						testshader.waveAmplitude = 0.4;
-						testshader.waveFrequency = 7;
-						testshader.waveSpeed = 2;
-						bg.shader = testshader.shader;
-						curbg = bg;
-						#end
-	
-					}
 
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
@@ -2130,17 +2061,7 @@ class PlayState extends MusicBeatState
 
 	override public function update(elapsed:Float)
 	{
-    elapsedtime += elapsed;
-	
-	if (curbg != null)
-	{
-		if (curbg.active)
-		{
-			var shad = cast(curbg.shader, Shaders.GlitchShader);
-			shad.uTime.value[0] += elapsed;
-		}
-
-	}
+    	elapsedtime += elapsed;
 
 		callOnLuas('onUpdate', [elapsed]);
 
